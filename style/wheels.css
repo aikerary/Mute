@@ -1,3 +1,35 @@
+
+
+.wheels {
+    position: fixed;
+    top: 250px;
+    background-color: var(--main);
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    z-index: -1001;
+  }
+
+.wheels .container{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wheels .container .indications{
+    height: 100px;
+    width: 100px;
+  }
+
+  .wheels .container #vertical{
+    rotate: -90deg;
+  }
+
 .containerind{
     padding: 0;
     margin: 0;
@@ -10,7 +42,6 @@
     position: relative;
     width: 300px;
     height: 300px;
-    background-color: red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,12 +52,12 @@
     position:absolute;
     width: 75px;
     height: 75px;
-    background-color: black;
+    background-color: var(--secondary);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: lightblue;
+    color: var(--main);
     font-size: 3em;
     font-weight: bolder;
     cursor: pointer;
@@ -35,5 +66,6 @@
 
 .menu .toggle.active{
     transform: rotate(315deg);
-    box-shadow: 0 0 0 60px black;
+    box-shadow: 0 0 0 60px var(--secondary), 0 0 0 68px var(--secondary);
+    background-color: var(--main);
 }
