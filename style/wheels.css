@@ -8,7 +8,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    z-index: -1001;
+    z-index: -11;
   }
 
 .wheels .container{
@@ -65,7 +65,41 @@
 
 .menu .toggle.active{
     transform: rotate(315deg);
-    box-shadow: 0 0 0 60px var(--secondary), 0 0 0 68px var(--secondary);
+    box-shadow: 0 0 0 68px var(--secondary);
     background-color: var(--main);
     color: var(--secondary);
+}
+
+.menu li{
+  position: absolute;
+  list-style: none;
+  left: 10px;
+  transform: rotate(calc(360deg/5*var(--i))) translateX(40px);
+  transform-origin: 140px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+  transition: .5s;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.menu.active li{
+  visibility: visible;
+  opacity: 1;
+  color: white;
+}
+
+.menu li a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  font-size: 1.75em;
+  color: black;
+  transform: rotate(calc(360deg/-5*var(--i)));
+  background-color: white;
+  border-radius: 50%;
 }
