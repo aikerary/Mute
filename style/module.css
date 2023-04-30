@@ -43,7 +43,7 @@
     /* Get the widht of the device, calculate it as 100% of the screen*/
     border-width: 100vh 95vw 100vh 0;
     border-color: transparent var(--main) transparent transparent;
-    right: -1745px;
+    right: -92.8vw;
     top: -1500;
     visibility: hidden;
     pointer-events: none;
