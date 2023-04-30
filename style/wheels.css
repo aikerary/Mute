@@ -1,5 +1,5 @@
 .wheels {
-    position: fixed;
+    position: absolute;
     top: 250px;
     background-color: var(--main);
     width: 100%;
