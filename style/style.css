@@ -4,7 +4,7 @@
     /* Create a variable named main and a variable named secondary, and a variable named active */
     --main: white;
     --secondary: black;
-    --active: green;
+    --active: lightblue;
 }
 body{
     margin: 0px;

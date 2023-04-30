@@ -97,9 +97,72 @@
   align-items: center;
   width: 55px;
   height: 55px;
-  font-size: 1.75em;
+  font-size: 3em;
   color: black;
   transform: rotate(calc(360deg/-5*var(--i)));
   background-color: white;
   border-radius: 50%;
+}
+
+.menu.active li.active{
+  transform: rotate(calc(360deg/5*var(--i))) translateX(12px);
+}
+
+.menu.active li.active a{
+  transition: .5s;
+  background: none;
+}
+
+.indicator{
+  position: absolute;
+  left: calc(50% + 2.5px);
+  transform-origin: left;
+  width: 100px;
+  height: 0px;
+  background-color: var(--active);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.indicator::before{
+  content: "";
+  position: absolute;
+  top : -27.5px;
+  left: 72px;
+  width: 55px;
+  height: 55px;
+  background-color: var(--active);
+  box-shadow: 0 0 0 5px var(--main);
+  border-radius: 50%;
+  transition: .5s;
+  opacity: 0;
+}
+
+.menu.active .indicator::before{
+  opacity: 1;
+  top: -27.5px;
+  left: -27.5px;
+  background: var(--active);
+  box-shadow: 0 0 0 5px var(--main);
+  z-index: -1;
+}
+
+.menu li:nth-child(2).active ~ .indicator{
+  transform: rotate(0deg) translateX(-100px);
+}
+
+.menu li:nth-child(3).active ~ .indicator{
+  transform: rotate(72deg) translateX(-100px);
+}
+
+.menu li:nth-child(4).active ~ .indicator{
+  transform: rotate(144deg) translateX(-100px);
+}
+
+.menu li:nth-child(5).active ~ .indicator{
+  transform: rotate(216deg) translateX(-100px);
+}
+
+.menu li:nth-child(6).active ~ .indicator{
+  transform: rotate(288deg) translateX(-100px);
 }
