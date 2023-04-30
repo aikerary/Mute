@@ -1,5 +1,5 @@
 // Create a window onload function
-window.onload = function() {
+window.addEventListener('load', function() {
     // Select all the items with the class name toggle
     var toggles = document.getElementsByClassName('toggle');
     // Select all the items with the class name menu
@@ -79,4 +79,4 @@ window.onload = function() {
         }
     }
     removeActive1();
-};
+});

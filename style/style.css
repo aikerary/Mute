@@ -5,7 +5,6 @@
     --main: white;
     --secondary: black;
     --active: lightblue;
-    --disable: red;
 }
 body{
     margin: 0px;
@@ -69,8 +68,6 @@ figure{
     border: 0px;
     margin: 0px;
     text-decoration: none;
-    /* Remove the after click effect */
-    -webkit-tap-highlight-color: transparent;
     height: fit-content;
     width: fit-content;
 }
@@ -99,4 +96,12 @@ a figure:hover{
 
 a figure:hover .menuoptions{
     filter: invert(100%);
+}
+
+a figure:active{
+    background-color: var(--active);
+}
+
+a figure:active .menuoptions{
+    filter: invert(0%);
 }
