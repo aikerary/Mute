@@ -82,13 +82,13 @@
   transition: .5s;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--main);
 }
 
 .menu.active li{
   visibility: visible;
   opacity: 1;
-  color: white;
+  color: var(--main);
 }
 
 .menu li a{
@@ -98,9 +98,9 @@
   width: 55px;
   height: 55px;
   font-size: 3em;
-  color: black;
+  color: var(--secondary);
   transform: rotate(calc(360deg/-5*var(--i)));
-  background-color: white;
+  background-color: var(--main);
   border-radius: 50%;
   cursor: pointer;
 }

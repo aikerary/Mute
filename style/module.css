@@ -1,6 +1,6 @@
 .module {
     position: absolute;
-    top: 100%;
+    top: 150%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0;
@@ -74,12 +74,12 @@
   }
   
   .graph1 {
-    background-color: red;
+    background-color: var(--main);
     z-index: -1000;
   }
   
   .graph2 {
-    background-color: blue;
+    background-color: var(--secondary);
     z-index: -2000;
   }
   

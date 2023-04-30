@@ -1,0 +1,48 @@
+
+.bulbed .banner{
+    background-color: var(--secondary);
+    /* Create a portrait that surrounds it only by the bottom part*/
+    border: 0px;
+    border-bottom: 7px solid var(--bulb);
+}
+
+.bulbed .banner #logo{
+    filter: invert(87%) sepia(22%) saturate(1386%) hue-rotate(13deg) brightness(107%) contrast(113%);
+}
+
+.bulbed .navbar li a{
+    filter: invert(87%) sepia(22%) saturate(1386%) hue-rotate(13deg) brightness(107%) contrast(113%);
+}
+
+.bulbed .wheels {
+    background-color: var(--secondary);
+    border: 0px;
+    border-bottom: 7px solid var(--bulb);
+  }
+.bulbed .wheels .container .indications {
+    filter: invert(87%) sepia(22%) saturate(1386%) hue-rotate(13deg) brightness(107%) contrast(113%);
+}
+.bulbed .menu .toggle {
+    background-color: var(--bulb);
+    color: var(--secondary);
+}
+
+.bulbed .menu.active .toggle {
+    color: var(--bulb);
+    background-color: var(--secondary);
+}
+
+.bulbed .menu.active .toggle.active {
+    color: var(--bulb);
+    box-shadow: 0 0 0 68px var(--bulb);
+}
+
+.bulbed .menu.active .indicator::before{
+    background: var(--secondary);
+    box-shadow: 0 0 0 5px var(--secondary);
+  }
+
+.bulbed .menu li a{
+    color: var(--bulb);
+    background-color: var(--secondary);
+}
