@@ -1,4 +1,9 @@
 // Create an event listener to load window
 window.addEventListener('load', function() {
-    console.log('Bulb loaded');
+    // Get the element with the class mouseketool
+    var mouseketool = document.querySelector('.mouseketool');
+    // When clicked, toggle the class active
+    mouseketool.addEventListener('click', function() {
+        mouseketool.classList.toggle('active');
+    });
 });

@@ -5,6 +5,7 @@
     --main: white;
     --secondary: black;
     --active: lightblue;
+    --bulb: yellow;
 }
 body{
     margin: 0px;
