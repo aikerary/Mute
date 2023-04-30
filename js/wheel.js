@@ -27,15 +27,7 @@ window.onload = function() {
                 for (var j = 0; j < menuItems0.length; j++) {
                     menuItems0[j].classList.remove('active');
                 }
-                // If the item doesn't have the class active
-                // Add the class active to the clicked item
-                // Else remove the class active from the clicked item
-                if (!this.classList.contains('active')) {
-                    this.classList.add('active');
-                }
-                else {
-                    this.classList.remove('active');
-                }
+                this.classList.add('active');
             });
         }
     }
@@ -51,17 +43,40 @@ window.onload = function() {
                 for (var j = 0; j < menuItems1.length; j++) {
                     menuItems1[j].classList.remove('active');
                 }
-                // If the item doesn't have the class active
-                // Add the class active to the clicked item
-                // Else remove the class active from the clicked item
-                if (!this.classList.contains('active')) {
-                    this.classList.add('active');
-                }
-                else {
-                    this.classList.remove('active');
-                }
+                this.classList.add('active');
             });
         }
     }
     activeLi1();
+
+    // Create a function for menuItems0, when you click on the item
+    // it will search the element that contains the same class in 
+    // menuItems1 and delete the class active from it
+    function removeActive0(){
+        for (var i = 0; i < menuItems0.length; i++) {
+            menuItems0[i].addEventListener('click', function() {
+                for (var j = 0; j < menuItems1.length; j++) {
+                    if (menuItems1[j].classList.contains(this.classList[0])) {
+                        menuItems1[j].classList.remove('active');
+                    }
+                }
+            });
+        }
+    }
+    removeActive0();
+    // Create a function for menuItems1, when you click on the item
+    // it will search the element that contains the same class in
+    // menuItems0 and delete the class active from it
+    function removeActive1(){
+        for (var i = 0; i < menuItems1.length; i++) {
+            menuItems1[i].addEventListener('click', function() {
+                for (var j = 0; j < menuItems0.length; j++) {
+                    if (menuItems0[j].classList.contains(this.classList[0])) {
+                        menuItems0[j].classList.remove('active');
+                    }
+                }
+            });
+        }
+    }
+    removeActive1();
 };
