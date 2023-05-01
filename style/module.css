@@ -61,6 +61,29 @@
     background-color: var(--bulb);
   }
 
+  .gender{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: var(--main);
+    left: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5em;
+    background:none;
+  }
+
+  #male{
+    visibility: visible;
+    color: white;
+  }
+
+  #female{
+    visibility: hidden;
+    color: black;
+  }
+
   .two-graph {
     position: relative;
   }
