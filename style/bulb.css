@@ -71,10 +71,10 @@
   
   /* Estilo del "pulgador" o "thumb" de la barra de desplazamiento */
 .bulbed::-webkit-scrollbar-thumb {
-    background-color: rgba(254, 252, 36, 0.4);
+    background-color: rgba(0,0,0, 1);
   }
   
   /* Estilo del "pulgador" o "thumb" de la barra de desplazamiento cuando se está haciendo scroll */
 .bulbed::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(254, 252, 36, 0.6);
+    background-color: rgba(0, 0, 0, 0.9);
   }
