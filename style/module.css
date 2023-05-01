@@ -1,10 +1,10 @@
 .module {
     position: absolute;
-    top: 150%;
+    top: 150vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0;
-    height: 500px;
+    height: 50vh;
     width: 100%;
   }
   
@@ -36,7 +36,7 @@
   #bulb-contain a::after {
     content: "";
     position: absolute;
-    z-index: -1500;
+    z-index: -20;
     width: 0;
     height: 0;
     border-style: solid;
@@ -53,6 +53,7 @@
   #bulb-contain a.active::after {
     border-color: transparent var(--bulb) transparent transparent;
     visibility: visible;
+    z-index: -30;
   }
   
 
@@ -75,17 +76,19 @@
   
   .graph1 {
     background-color: var(--main);
-    z-index: -1000;
+    z-index: -20;
+    visibility: visible;
   }
   
   .graph2 {
     background-color: var(--secondary);
-    z-index: -2000;
+    z-index: -30;
   }
   
   .sliders {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    padding-left: 100px;
+    padding-top: 200px;
   }
   

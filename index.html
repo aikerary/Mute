@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="style/wheels.css">
     <link rel="stylesheet" href="style/module.css">
     <link rel="stylesheet" href="style/bulb.css">
+    <link rel="stylesheet" href="style/multislider.css">
     <!-- Add a script from js/script.js -->
     <script src="js/script.js"></script>
     <script src="js/wheel.js"></script>
     <script src="js/bulb.js"></script>
+    <script src="js/multirange.js"></script>
 </head>
 <body>
     <!-- Create a header -->
@@ -89,9 +91,10 @@
           <div class="graph2"></div>
         </div>
         <div class="sliders">
-          <input type="range">
-          <input type="range">
-          <input type="range">
+            <span class="multi-range">
+                <input type="range" min="0" max="50" value="5" id="lower">
+                <input type="range" min="0" max="50" value="45" id="upper">
+            </span>
         </div>
       </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -46,3 +46,10 @@
     color: var(--bulb);
     background-color: var(--secondary);
 }
+
+.bulbed .graph1 {
+    visibility: hidden;
+}
+.bulbed .firefly, .bulbed .firefly::before, .bulbed .firefly::after {
+    visibility: visible;
+}
