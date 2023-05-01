@@ -65,3 +65,13 @@
     background-color: grey; 
  }
  
+ .indices{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 75%;
+      height: 80px;
+      margin-top: 70px;
+      font-size: 4em;
+      color: var(--main);
+ }

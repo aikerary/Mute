@@ -86,3 +86,7 @@
 .bulbed #female{
     visibility: visible;
 }
+
+.bulbed .indices{
+    color: var(--secondary);
+}
