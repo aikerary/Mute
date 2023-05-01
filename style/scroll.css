@@ -1,0 +1,26 @@
+/* Estilo de la barra de desplazamiento */
+::-webkit-scrollbar {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Estilo del "pulgador" o "thumb" de la barra de desplazamiento */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+  }
+  
+  /* Estilo del "pulgador" o "thumb" de la barra de desplazamiento cuando se está haciendo scroll */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Eliminar las flechas de la barra de desplazamiento */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  
+  /* Estilo del indicador curvado */
+  ::-webkit-scrollbar-thumb:vertical {
+    border-radius: 10px;
+  }
+  
