@@ -18,8 +18,12 @@
     <script src="js/wheel.js"></script>
     <script src="js/bulb.js"></script>
     <script src="js/multirange.js"></script>
+    <script src="js/click.js"></script>
 </head>
 <body>
+    <audio id="audio-click">
+        <source src="srcs/click.mp3" type="audio/mpeg">
+      </audio>
     <!-- Create a header -->
     <header class="banner">
         <figure class="logo">
@@ -85,7 +89,7 @@
     </div>
     <div class="module">
         <div id="bulb-contain">
-          <a class="mouseketool"><ion-icon name="bulb-outline"></ion-icon></a>
+          <a class="mouseketool" id="bulb-button"><ion-icon name="bulb-outline"></ion-icon></a>
           <div class="gender" id="male"><ion-icon name="male-outline"></ion-icon></div>
           <div class="gender" id="female"><ion-icon name="female-outline"></ion-icon></div>
         </div>
