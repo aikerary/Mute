@@ -63,3 +63,18 @@
     /* Use a linear gradient to generate only the 2px height background */
     background-size: 100% 2px;
 }
+
+/* Estilo de la barra de desplazamiento */
+.bulbed::-webkit-scrollbar {
+    background-color: rgba(254, 252, 36, 0.2);
+  }
+  
+  /* Estilo del "pulgador" o "thumb" de la barra de desplazamiento */
+.bulbed::-webkit-scrollbar-thumb {
+    background-color: rgba(254, 252, 36, 0.4);
+  }
+  
+  /* Estilo del "pulgador" o "thumb" de la barra de desplazamiento cuando se está haciendo scroll */
+.bulbed::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(254, 252, 36, 0.6);
+  }
