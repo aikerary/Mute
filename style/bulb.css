@@ -53,3 +53,13 @@
 .bulbed .firefly, .bulbed .firefly::before, .bulbed .firefly::after {
     visibility: visible;
 }
+
+.bulbed  input[type=range]::-webkit-slider-thumb{
+    background-color: var(--secondary);
+}
+
+.bulbed input[type=range] {
+    background: linear-gradient(var(--secondary), var(--secondary)) no-repeat center;
+    /* Use a linear gradient to generate only the 2px height background */
+    background-size: 100% 2px;
+}
