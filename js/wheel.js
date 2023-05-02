@@ -1,9 +1,9 @@
 // Create a window onload function
 window.addEventListener('load', function() {
-    var classActive1;
-    var active1 = false;
-    var classActive0;
-    var active0 = false;
+    let classActive1;
+    let active1 = false;
+    let classActive0;
+    let active0 = false;
     // Select all the items with the class name toggle
     var toggles = document.getElementsByClassName('toggle');
     // Select all the items with the class name menu
@@ -91,7 +91,6 @@ window.addEventListener('load', function() {
                 if (!menuItems1[i].classList.contains('active')) {
                     active0 = true;
                     classActive0 = menuItems0[i].classList[0];
-                    console.log(classActive0);
                 }
             }
             if (menuItems1[i].classList.contains('active')) {
@@ -99,7 +98,6 @@ window.addEventListener('load', function() {
                 classActive1 = menuItems1[i].classList[0];
             }
         }
-        console.log(active0&&active1);
         var lower = document.getElementById('lower').value;
         var upper = document.getElementById('upper').value;
         if (active0 && active1) {
@@ -114,7 +112,6 @@ window.addEventListener('load', function() {
                 if (!menuItems0[i].classList.contains('active')) {
                     active1 = true;
                     classActive1 = menuItems1[i].classList[0];
-                    console.log(classActive1);
                 }
                 if (menuItems0[i].classList.contains('active')) {
                     active0 = true;
@@ -124,7 +121,6 @@ window.addEventListener('load', function() {
         }
         var lower = document.getElementById('lower').value;
         var upper = document.getElementById('upper').value;
-        console.log(active0&&active1);
         if (active0 && active1) {
             fetchData(lower, upper, classActive0, classActive1);
         }
