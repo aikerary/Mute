@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style/bulb.css">
     <link rel="stylesheet" href="style/multislider.css">
     <link rel="stylesheet" href="style/scroll.css">
+    <link rel="stylesheet" href="style/button.css">
     <!-- Add a script from js/script.js -->
     <script src="js/script.js"></script>
     <script src="js/wheel.js"></script>
@@ -99,12 +100,15 @@
         </div>
         <div class="sliders">
             <div class="indices"><ion-icon name="remove-outline"></ion-icon><ion-icon name="add-outline"></ion-icon></div>
-            <input type="range" min="0" max="50" value="25" id="zoom">
+            <input type="range" min="0" max="50" value="0" id="zoom">
             <div class="indices"><ion-icon name="ellipse-outline"></ion-icon><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
             <span class="multi-range">
                 <input type="range" min="0" max="50" value="5" id="lower">
-                <input type="range" min="0" max="50" value="45" id="upper">
+                <input type="range" min="0" max="50" value="15" id="upper">
             </span>
+            <button class="rounded-button">
+                <ion-icon name="send-outline"></ion-icon>
+            </button>
         </div>
       </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
