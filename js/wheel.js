@@ -62,8 +62,6 @@ window.addEventListener('load', function() {
                 for (var j = 0; j < menuItems1.length; j++) {
                     if (menuItems1[j].classList.contains(this.classList[0])) {
                         menuItems1[j].classList.remove('active');
-                        active1 = false;
-                        classActive1 = null;
                     }
                 }
             });
@@ -79,8 +77,6 @@ window.addEventListener('load', function() {
                 for (var j = 0; j < menuItems0.length; j++) {
                     if (menuItems0[j].classList.contains(this.classList[0])) {
                         menuItems0[j].classList.remove('active');
-                        active0 = false;
-                        classActive0 = null;
                     }
                 }
             });
@@ -91,10 +87,19 @@ window.addEventListener('load', function() {
     menus[0].addEventListener('click', function() {
         for (var i = 0; i < menuItems0.length; i++) {
             if (menuItems0[i].classList.contains('active')) {
-                active0 = true;
-                classActive0 = menuItems0[i].classList[0];
+                // Test if the menuItems1[i] has no the class active
+                if (!menuItems1[i].classList.contains('active')) {
+                    active0 = true;
+                    classActive0 = menuItems0[i].classList[0];
+                    console.log(classActive0);
+                }
+            }
+            if (menuItems1[i].classList.contains('active')) {
+                active1 = true;
+                classActive1 = menuItems1[i].classList[0];
             }
         }
+        console.log(active0&&active1);
         var lower = document.getElementById('lower').value;
         var upper = document.getElementById('upper').value;
         if (active0 && active1) {
@@ -105,12 +110,21 @@ window.addEventListener('load', function() {
     menus[1].addEventListener('click', function() {
         for (var i = 0; i < menuItems1.length; i++) {
             if (menuItems1[i].classList.contains('active')) {
-                active1 = true;
-                classActive1 = menuItems1[i].classList[0];
+                // Test if the menuItems0[i] has no the class active
+                if (!menuItems0[i].classList.contains('active')) {
+                    active1 = true;
+                    classActive1 = menuItems1[i].classList[0];
+                    console.log(classActive1);
+                }
+                if (menuItems0[i].classList.contains('active')) {
+                    active0 = true;
+                    classActive0 = menuItems0[i].classList[0];
+                }
             }
         }
         var lower = document.getElementById('lower').value;
         var upper = document.getElementById('upper').value;
+        console.log(active0&&active1);
         if (active0 && active1) {
             fetchData(lower, upper, classActive0, classActive1);
         }
@@ -120,6 +134,8 @@ window.addEventListener('load', function() {
     // Create a function named "fetchData"
     // It has the parameters "lower" and "upper" and "classActive0" and "classActive1"
     function fetchData(lower, upper, classActive0, classActive1) {
+        active1 = false;
+        active0 = false;
         fetch('https://mutex.onrender.com/data', {
             method: 'POST',
             headers: {
@@ -130,6 +146,8 @@ window.addEventListener('load', function() {
               second: classActive1,
               upper: upper,
               lower: lower,
+              column_name: 'sport',
+              num_rows: 10
             })
           })
           .then(response => response.json())

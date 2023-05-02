@@ -11,22 +11,28 @@ window.onload = function() {
         console.log(`Lower: ${lower}, Upper: ${upper}`);
     });
     
-    // fetch('https://mutex.onrender.com/data', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     column: 'sport',
-    //     rows: 10
-    //   })
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   console.log(data);
-    //   console.log("fetching data");
-    // })
-    // .catch(error => {
-    //   console.error(error);
-    // });
+    function fetchData(lower, upper, classActive0, classActive1) {
+      active1 = false;
+      active0 = false;
+      fetch('https://mutex.onrender.com/data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            first: classActive0,
+            second: classActive1,
+            upper: upper,
+            lower: lower,
+            column_name: 'sport',
+            num_rows: 10
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error(error);
+      });}
   };
