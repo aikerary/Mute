@@ -20,6 +20,10 @@
     <script src="js/bulb.js"></script>
     <script src="js/multirange.js"></script>
     <script src="js/click.js"></script>
+    <script src="js/graph.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <audio id="audio-click">
@@ -95,7 +99,7 @@
           <div class="gender" id="female"><ion-icon name="female-outline"></ion-icon></div>
         </div>
         <div class="two-graph">
-          <div class="graph1"></div>
+          <div class="graph1"><canvas id="myChart"></canvas></div>
           <div class="graph2"></div>
         </div>
         <div class="sliders">
@@ -111,7 +115,5 @@
             </button>
         </div>
       </div>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

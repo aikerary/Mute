@@ -1,9 +1,9 @@
 // Create a window onload function
 window.addEventListener('load', function() {
-    let classActive1;
-    let active1 = false;
-    let classActive0;
-    let active0 = false;
+    var classActive1;
+    var active1 = false;
+    var classActive0;
+    var active0 = false;
     // Select all the items with the class name toggle
     var toggles = document.getElementsByClassName('toggle');
     // Select all the items with the class name menu

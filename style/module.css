@@ -101,11 +101,17 @@
     background-color: var(--main);
     z-index: -20;
     visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .graph2 {
     background-color: var(--secondary);
     z-index: -30;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
   }
   
   .sliders {

@@ -50,6 +50,9 @@
 .bulbed .graph1 {
     visibility: hidden;
 }
+.bulbed .graph2 {
+    visibility: visible;
+}
 .bulbed .firefly, .bulbed .firefly::before, .bulbed .firefly::after {
     visibility: visible;
 }
