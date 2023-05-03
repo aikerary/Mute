@@ -10,16 +10,18 @@ window.onload = function() {
     var lower = document.getElementById('lower').value;
     var upper = document.getElementById('upper').value;
     // Get the element with the class rounded-button
-    var button = document.querySelector('.rounded-button');
+    const button = document.querySelector('.rounded-button');
     // When clicked, get the value of the elements with id lower and upper
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function()  {
         lower = document.getElementById('lower').value;
         upper = document.getElementById('upper').value;
+        console.log("I'm here");
         console.log(`Lower: ${lower}, Upper: ${upper}`);
         for (var i = 0; i < menuItems0.length; i++) {
             if (menuItems0[i].classList.contains('active')) {
                 classActive0 = menuItems0[i].classList[0];
                 active0 = true;
+
             }
         }
         for (var i = 0; i < menuItems1.length; i++) {
