@@ -1,14 +1,12 @@
 // Create a window onload function
 window.addEventListener('load', function() {
-    var classActive1;
-    var active1 = false;
-    var classActive0;
-    var active0 = false;
     // Select all the items with the class name toggle
-    var toggles = document.getElementsByClassName('toggle');
+    const toggles = document.getElementsByClassName('toggle');
     // Select all the items with the class name menu
-    var menus = document.getElementsByClassName('menu');
+    const menus = document.getElementsByClassName('menu');
     // With toggle 0, add an event listener for a click
+    const slide_upper = document.getElementById('upper');
+    const slide_lower = document.getElementById('lower');
     toggles[0].addEventListener('click', function() {
         // Toogle the class "active" for the menu
         menus[0].classList.toggle('active');
@@ -20,118 +18,88 @@ window.addEventListener('load', function() {
         menus[1].classList.toggle('active');
         toggles[1].classList.toggle('active');
     });
-    // Get all the childs of menu 0 that are li
-    var menuItems0 = menus[0].getElementsByTagName('li');
-    function activeLi0(){
-        // For each item in the menu
-        for (var i = 0; i < menuItems0.length; i++) {
-            // If the item is clicked
-            menuItems0[i].addEventListener('click', function() {
-                // Remove the class active from all the items
-                for (var j = 0; j < menuItems0.length; j++) {
-                    menuItems0[j].classList.remove('active');
-                }
-                this.classList.add('active');
-            });
-        }
-    }
-    activeLi0();
-    // Get all the childs of menu 1 that are li
-    var menuItems1 = menus[1].getElementsByTagName('li');
-    function activeLi1(){
-        // For each item in the menu
-        for (var i = 0; i < menuItems1.length; i++) {
-            // If the item is clicked
-            menuItems1[i].addEventListener('click', function() {
-                // Remove the class active from all the items
-                for (var j = 0; j < menuItems1.length; j++) {
-                    menuItems1[j].classList.remove('active');
-                }
-                this.classList.add('active');
-            });
-        }
-    }
-    activeLi1();
 
-    // Create a function for menuItems0, when you click on the item
-    // it will search the element that contains the same class in 
-    // menuItems1 and delete the class active from it
-    function removeActive0(){
-        for (var i = 0; i < menuItems0.length; i++) {
-            menuItems0[i].addEventListener('click', function() {
-                for (var j = 0; j < menuItems1.length; j++) {
-                    if (menuItems1[j].classList.contains(this.classList[0])) {
-                        menuItems1[j].classList.remove('active');
-                    }
-                }
-            });
+    // Create a function that receives a list of items, and an index
+    function toggleActiveWheels(items_a, items_b, index) {
+        // Remove all the class "active" in items_a
+        for (let i = 0; i < items_a.length; i++) {
+            items_a[i].classList.remove('active');
+        }
+        items_a[index].classList.add('active');
+        verifyOtherActive(items_b, index);
+    }
+
+    function verifyOtherActive(items_b, index){
+        // If the class "active" is in items_b[index]
+        // Remove the class active from items_b[index]
+        if (items_b[index].classList.contains('active')) {
+            items_b[index].classList.remove('active');
         }
     }
-    removeActive0();
-    // Create a function for menuItems1, when you click on the item
-    // it will search the element that contains the same class in
-    // menuItems0 and delete the class active from it
-    function removeActive1(){
-        for (var i = 0; i < menuItems1.length; i++) {
-            menuItems1[i].addEventListener('click', function() {
-                for (var j = 0; j < menuItems0.length; j++) {
-                    if (menuItems0[j].classList.contains(this.classList[0])) {
-                        menuItems0[j].classList.remove('active');
-                    }
-                }
-            });
-        }
-    }
-    removeActive1();
-    // Add an event listener to prove if both menus has at least one menuItem active
-    menus[0].addEventListener('click', function() {
-        for (var i = 0; i < menuItems0.length; i++) {
-            if (menuItems0[i].classList.contains('active')) {
-                // Test if the menuItems1[i] has no the class active
-                if (!menuItems1[i].classList.contains('active')) {
-                    active0 = true;
-                    classActive0 = menuItems0[i].classList[0];
-                }
+
+    function checkForActiveItem(list1, list2) {
+        let activeItemFound1 = false;
+        let activeItemFound2 = false;
+        for (let i = 0; i < list1.length; i++) {
+            if (list1[i].classList.contains('active')) {
+                activeItemFound1 = true;
             }
-            if (menuItems1[i].classList.contains('active')) {
-                active1 = true;
-                classActive1 = menuItems1[i].classList[0];
+            if (list2[i].classList.contains('active')) {
+                activeItemFound2 = true;
             }
         }
-        var lower = document.getElementById('lower').value;
-        var upper = document.getElementById('upper').value;
-        if (active0 && active1) {
-            fetchData(lower, upper, classActive0, classActive1);
-        }
-    }
-    );
-    menus[1].addEventListener('click', function() {
-        for (var i = 0; i < menuItems1.length; i++) {
-            if (menuItems1[i].classList.contains('active')) {
-                // Test if the menuItems0[i] has no the class active
-                if (!menuItems0[i].classList.contains('active')) {
-                    active1 = true;
-                    classActive1 = menuItems1[i].classList[0];
-                }
-                if (menuItems0[i].classList.contains('active')) {
-                    active0 = true;
-                    classActive0 = menuItems0[i].classList[0];
-                }
+        return activeItemFound1 && activeItemFound2;
+      }
+    
+    function checkAndReturn(list1, list2){
+        let classActive0='';
+        let classActive1='';
+        for (let i = 0; i < list1.length; i++) {
+            if (list1[i].classList.contains('active')) {
+                classActive0 = list1[i].classList[0];
+            }
+            if (list2[i].classList.contains('active')) {
+                classActive1 = list2[i].classList[0];  
             }
         }
-        var lower = document.getElementById('lower').value;
-        var upper = document.getElementById('upper').value;
-        if (active0 && active1) {
-            fetchData(lower, upper, classActive0, classActive1);
+        return [classActive0, classActive1];
+    }
+
+    function checkAndFetch(list1, list2, slider_lower, slider_upper){
+        const lower = slider_lower.value;
+        const upper = slider_upper.value;
+        if (checkForActiveItem(list1, list2)) {
+            const classes = checkAndReturn(list1, list2);
+            fetchData(lower, upper, classes[0], classes[1]);
         }
     }
-    );
+      
+    // Get all the childs of menu 0 that are li
+    const menuItems0 = menus[0].getElementsByTagName('li');
+    // Get all the childs of menu 1 that are li
+    const menuItems1 = menus[1].getElementsByTagName('li');
+
+    // Add event listeners for each item in menuItems0
+    for (let i = 0; i < menuItems0.length; i++) {
+        menuItems0[i].addEventListener('click', function() {
+            // Toggle the class "active" for the menu
+            toggleActiveWheels(menuItems0, menuItems1, i);
+            checkAndFetch(menuItems0, menuItems1, slide_lower, slide_upper);
+        });
+    }
+
+    // Add event listeners for each item in menuItems1
+    for (let i = 0; i < menuItems1.length; i++) {
+        menuItems1[i].addEventListener('click', function() {
+            // Toggle the class "active" for the menu
+            toggleActiveWheels(menuItems1, menuItems0, i);
+            checkAndFetch(menuItems0, menuItems1, slide_lower, slide_upper);
+        });
+    }
 
     // Create a function named "fetchData"
     // It has the parameters "lower" and "upper" and "classActive0" and "classActive1"
     function fetchData(lower, upper, classActive0, classActive1) {
-        active1 = false;
-        active0 = false;
         fetch('https://mutex.onrender.com/data', {
             method: 'POST',
             headers: {
