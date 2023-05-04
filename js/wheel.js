@@ -65,17 +65,23 @@ window.addEventListener('load', function() {
         return [classActive0, classActive1];
     }
 
-    function checkAndFetch(list1, list2, slider_lower, slider_upper){
+    async function checkAndFetch(list1, list2, slider_lower, slider_upper) {
         const lower = slider_lower.value;
         const upper = slider_upper.value;
         if (checkForActiveItem(list1, list2)) {
-            const classes = checkAndReturn(list1, list2);
-            json_M=fetchData(lower, upper, classes[0], classes[1], "_M");
-            json_F=fetchData(lower, upper, classes[0], classes[1], "_F");
-            console.log(json_M);
-            console.log(json_F);
+          const classes = checkAndReturn(list1, list2);
+          try {
+            const [json_M, json_F] = await Promise.all([
+              fetchData(lower, upper, classes[0], classes[1], "_M"),
+              fetchData(lower, upper, classes[0], classes[1], "_F")
+            ]);
+            console.log("Data for males:", json_M);
+            console.log("Data for females:", json_F);
+          } catch (error) {
+            console.error(error);
+          }
         }
-    }
+      }
       
     // Get all the childs of menu 0 that are li
     const menuItems0 = menus[0].getElementsByTagName('li');
@@ -102,28 +108,24 @@ window.addEventListener('load', function() {
 
     // Create a function named "fetchData"
     // It has the parameters "lower" and "upper" and "classActive0" and "classActive1"
-    function fetchData(lower, upper, classActive0, classActive1, gender) {
-        active1 = false;
-        active0 = false;
-        fetch('https://mutex.onrender.com/data', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              first: classActive0,
-              second: classActive1,
-              upper: upper,
-              lower: lower,
-              gender: gender,
-            })
-          })
-          .then(response => response.json())
-          .then(data => {
-            // Return the data
+    async function fetchData(lower, upper, classActive0, classActive1, gender) {
+        try {
+            const response = await fetch('https://mutex.onrender.com/data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    first: classActive0,
+                    second: classActive1,
+                    upper: upper,
+                    lower: lower,
+                    gender: gender,
+                })
+            });
+            const data = await response.json();
             return data;
-          })
-          .catch(error => {
+        } catch (error) {
             console.error(error);
-        });}
+        }}
 });
