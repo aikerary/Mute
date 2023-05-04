@@ -18,6 +18,7 @@ window.addEventListener('load', function() {
         menus[1].classList.toggle('active');
         toggles[1].classList.toggle('active');
     });
+    var times = 0;
 
     // Create a function that receives a list of items, and an index
     function toggleActiveWheels(items_a, items_b, index) {
@@ -85,8 +86,94 @@ window.addEventListener('load', function() {
         });
       
         return { categories, categoryData };
-      }      
+      }
+
+      function createApexChart_Male(series, x_axis, chart_id) {
+        var options = {
+          series: series,
+          chart: {
+            type: 'bar',
+            height: 350
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: '55%',
+              endingShape: 'rounded'
+            },
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+          },
+          xaxis: {
+            categories: x_axis,
+          },
+          yaxis: {
+            title: {
+              text:""
+            }
+          },
+          fill: {
+            opacity: 1
+          },
+          tooltip: {
+            enabled: false
+          }
+        };
       
+        chart_Male = new ApexCharts(document.querySelector(`#${chart_id}`), options);
+        chart_Male.render();
+      }      
+
+        function createApexChart_Female(series, x_axis, chart_id) {
+            var options = {
+                series: series,
+                chart: {
+                  type: 'bar',
+                  height: 350
+                },
+                plotOptions: {
+                  bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                  },
+                },
+                dataLabels: {
+                  enabled: false
+                },
+                stroke: {
+                  show: true,
+                  width: 2,
+                  colors: ['transparent']
+                },
+                xaxis: {
+                  categories: x_axis,
+                },
+                yaxis: {
+                  title: {
+                    text:""
+                  }
+                },
+                fill: {
+                  opacity: 1
+                },
+                tooltip: {
+                  enabled: false
+                }
+              };
+            
+              chart_Female = new ApexCharts(document.querySelector(`#${chart_id}`), options);
+              chart_Female.render();
+            }
+
+    var chart_Female;
+    var chart_Male;
 
     async function checkAndFetch(list1, list2, slider_lower, slider_upper) {
         const lower = slider_lower.value;
@@ -98,8 +185,15 @@ window.addEventListener('load', function() {
               fetchData(lower, upper, classes[0], classes[1], "_M"),
               fetchData(lower, upper, classes[0], classes[1], "_F")
             ]);
-            console.log("Data for males:", processTable(json_M));
-            console.log("Data for females:", processTable(json_F));
+            if (times>0){
+                chart_Male.destroy();
+                chart_Female.destroy();
+            }
+            data_male= processTable(json_M);
+            data_female= processTable(json_F);
+            createApexChart_Male(data_male.categoryData, data_male.categories, "male_chart");
+            createApexChart_Female(data_female.categoryData, data_female.categories, "female_chart");
+            times=times+1;
           } catch (error) {
             console.error(error);
           }
