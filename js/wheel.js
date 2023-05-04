@@ -65,6 +65,29 @@ window.addEventListener('load', function() {
         return [classActive0, classActive1];
     }
 
+    function processTable(data) {
+        // Paso 1: Agrupar filas por el primer valor en el header
+        const header = data.header;
+        const firstHeader = header[0];
+        const remainingHeaders = header.slice(1);
+        const categories = [];
+        data.rows.forEach((row) => {
+          const categoryValue = row[firstHeader];
+          categories.push(categoryValue);
+        });
+      
+        // Paso 2: Crear una lista de objetos usando los elementos restantes del header
+        const categoryData = remainingHeaders.map((headerName) => {
+          return {
+            name: headerName,
+            data: data.rows.map((row) => row[headerName]),
+          };
+        });
+      
+        return { categories, categoryData };
+      }      
+      
+
     async function checkAndFetch(list1, list2, slider_lower, slider_upper) {
         const lower = slider_lower.value;
         const upper = slider_upper.value;
@@ -75,8 +98,8 @@ window.addEventListener('load', function() {
               fetchData(lower, upper, classes[0], classes[1], "_M"),
               fetchData(lower, upper, classes[0], classes[1], "_F")
             ]);
-            console.log("Data for males:", json_M);
-            console.log("Data for females:", json_F);
+            console.log("Data for males:", processTable(json_M));
+            console.log("Data for females:", processTable(json_F));
           } catch (error) {
             console.error(error);
           }
