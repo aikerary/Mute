@@ -7,6 +7,7 @@ window.addEventListener('load', function() {
     // With toggle 0, add an event listener for a click
     const slide_upper = document.getElementById('upper');
     const slide_lower = document.getElementById('lower');
+    const rounded_button = document.querySelector('.rounded-button');
     toggles[0].addEventListener('click', function() {
         // Toogle the class "active" for the menu
         menus[0].classList.toggle('active');
@@ -222,6 +223,11 @@ window.addEventListener('load', function() {
             checkAndFetch(menuItems0, menuItems1, slide_lower, slide_upper);
         });
     }
+
+    // Add event listener to rounded button
+    rounded_button.addEventListener('click', function() {
+        checkAndFetch(menuItems0, menuItems1, slide_lower, slide_upper);
+    });
 
     // Create a function named "fetchData"
     // It has the parameters "lower" and "upper" and "classActive0" and "classActive1"
