@@ -4,11 +4,11 @@ window.onload = function() {
     let active0 = false;
     let classActive0;
     let classActive1;
-    var menus = document.getElementsByClassName('menu');
-    var menuItems0 = menus[0].getElementsByTagName('li');
-    var menuItems1 = menus[1].getElementsByTagName('li');
-    var lower = document.getElementById('lower').value;
-    var upper = document.getElementById('upper').value;
+    const menus = document.getElementsByClassName('menu');
+    const menuItems0 = menus[0].getElementsByTagName('li');
+    const menuItems1 = menus[1].getElementsByTagName('li');
+    const lower = document.getElementById('lower');
+    const upper = document.getElementById('upper');
     // Get the element with the class rounded-button
     const button = document.querySelector('.rounded-button');
     // When clicked, get the value of the elements with id lower and upper
@@ -35,7 +35,7 @@ window.onload = function() {
         }
     });
     
-    function fetchData(lower, upper, classActive0, classActive1) {
+    function fetchData(lower, upper, classActive0, classActive1, gender) {
       active1 = false;
       active0 = false;
       fetch('https://mutex.onrender.com/data', {
@@ -48,8 +48,7 @@ window.onload = function() {
             second: classActive1,
             upper: upper,
             lower: lower,
-            column_name: 'sport',
-            num_rows: 10
+            gender: gender,
           })
         })
         .then(response => response.json())

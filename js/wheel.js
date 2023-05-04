@@ -70,7 +70,10 @@ window.addEventListener('load', function() {
         const upper = slider_upper.value;
         if (checkForActiveItem(list1, list2)) {
             const classes = checkAndReturn(list1, list2);
-            fetchData(lower, upper, classes[0], classes[1]);
+            json_M=fetchData(lower, upper, classes[0], classes[1], "_M");
+            json_F=fetchData(lower, upper, classes[0], classes[1], "_F");
+            console.log(json_M);
+            console.log(json_F);
         }
     }
       
@@ -99,7 +102,9 @@ window.addEventListener('load', function() {
 
     // Create a function named "fetchData"
     // It has the parameters "lower" and "upper" and "classActive0" and "classActive1"
-    function fetchData(lower, upper, classActive0, classActive1) {
+    function fetchData(lower, upper, classActive0, classActive1, gender) {
+        active1 = false;
+        active0 = false;
         fetch('https://mutex.onrender.com/data', {
             method: 'POST',
             headers: {
@@ -110,13 +115,13 @@ window.addEventListener('load', function() {
               second: classActive1,
               upper: upper,
               lower: lower,
-              column_name: 'sport',
-              num_rows: 10
+              gender: gender,
             })
           })
           .then(response => response.json())
           .then(data => {
-            console.log(data);
+            // Return the data
+            return data;
           })
           .catch(error => {
             console.error(error);
