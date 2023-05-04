@@ -176,30 +176,40 @@ window.addEventListener('load', function() {
     var chart_Female;
     var chart_Male;
 
+    const spinner = document.getElementById("spinner");
+
+    // Mostrar el spinner
+    spinner.style.display = "block";
+    
     async function checkAndFetch(list1, list2, slider_lower, slider_upper) {
-        const lower = slider_lower.value;
-        const upper = slider_upper.value;
-        if (checkForActiveItem(list1, list2)) {
-          const classes = checkAndReturn(list1, list2);
-          try {
-            const [json_M, json_F] = await Promise.all([
-              fetchData(lower, upper, classes[0], classes[1], "_M"),
-              fetchData(lower, upper, classes[0], classes[1], "_F")
-            ]);
-            if (times>0){
-                chart_Male.destroy();
-                chart_Female.destroy();
-            }
-            data_male= processTable(json_M);
-            data_female= processTable(json_F);
-            createApexChart_Male(data_male.categoryData, data_male.categories, "male_chart");
-            createApexChart_Female(data_female.categoryData, data_female.categories, "female_chart");
-            times=times+1;
-          } catch (error) {
-            console.error(error);
+      const lower = slider_lower.value;
+      const upper = slider_upper.value;
+      if (checkForActiveItem(list1, list2)) {
+        const classes = checkAndReturn(list1, list2);
+        try {
+          const [json_M, json_F] = await Promise.all([
+            fetchData(lower, upper, classes[0], classes[1], "_M"),
+            fetchData(lower, upper, classes[0], classes[1], "_F")
+          ]);
+          // Ocultar el spinner cuando la promesa se resuelve
+          spinner.style.display = "none";
+          if (times>0){
+              chart_Male.destroy();
+              chart_Female.destroy();
           }
+          data_male= processTable(json_M);
+          data_female= processTable(json_F);
+          createApexChart_Male(data_male.categoryData, data_male.categories, "male_chart");
+          createApexChart_Female(data_female.categoryData, data_female.categories, "female_chart");
+          times=times+1;
+        } catch (error) {
+          // Ocultar el spinner cuando la promesa falla
+          spinner.style.display = "none";
+          console.error(error);
         }
       }
+    }
+    
       
     // Get all the childs of menu 0 that are li
     const menuItems0 = menus[0].getElementsByTagName('li');
